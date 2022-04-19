@@ -1,6 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import { UserContext } from '../../context/UserContext'
+import { useNavigate } from "react-router-dom";
 
 
 const Input = ({placeholder, name, type, value, handleChange }) =>(           
@@ -13,19 +14,24 @@ const Input = ({placeholder, name, type, value, handleChange }) =>(
 )
 
 const Login = () => {
-      const { handleLogin, handleChangeLogin } = useContext(UserContext)
-
-  return (
-    <div style={{display: 'flex', justifyContent: 'center', alignContent: 'center'}} >
-          <form onSubmit={(e)=>handleLogin(e)}>
+      const { handleLogin, handleChangeLogin, currentUser } = useContext(UserContext)
+      let navigate = useNavigate()
+      useEffect(()=>{
+            if(currentUser){
+                  navigate('/home')
+            }
+      }, [currentUser])
+      return (<>
+      <div style={{display: 'flex', justifyContent: 'center', alignContent: 'center'}} >
+            <form onSubmit={(e)=>handleLogin(e)}>
                 <Input  placeholder='Email' name='email' type='email' handleChange={handleChangeLogin}/>
                 <Input placeholder='Password' name='password' type='password' handleChange={handleChangeLogin}/>
-                <input type='submit' title='Login'/>
-          </form>
+                <input type='submit'/>
+            </form>
 
-          <Link to={"/register"}>Register</Link>
-    </div>
-  )
+            <Link to={"/register"}>Register</Link>
+      </div>
+  </>)
 }
 
 export default Login

@@ -1,4 +1,5 @@
 import './App.css';
+import React from 'react'
 import { Routes, Route } from "react-router-dom";
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
@@ -7,14 +8,12 @@ import  UserProvider from './context/UserContext';
 
 
 function App() {
-  const user = false
-  
   return (
     <UserProvider>
       <Routes>
-        <Route path='/' element={<Login/>}/>
+        <Route path='/' element={<Login />}/>
         <Route path='/register' element={<Register/>}/>
-        {user && <Route path='/home' element={<Home/>}/>}
+        <Route path='/home' element={<Home/>}/>
       </Routes>
     </UserProvider>
   );
