@@ -4,13 +4,13 @@ import { UserContext } from '../../context/UserContext'
 import { NavBar, Main, Footer } from './parts'
 
 const Home = () => {
-  const { handleLogin, handleChangeLogin, currentUser } = useContext(UserContext)
+  const { currentUser } = useContext(UserContext)
   let navigate = useNavigate()
   useEffect(()=>{
     if(!currentUser){
       navigate('/')
     }
-  },[])
+  },[currentUser])
   return (
     <div>
       <NavBar />
