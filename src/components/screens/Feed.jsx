@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from '../../context/UserContext'
 import { NavBar, Main, Footer } from './parts'
 
-const Home = () => {
+
+const Feed = () => {
   const { currentUser } = useContext(UserContext)
   let navigate = useNavigate()
   useEffect(()=>{
@@ -13,11 +14,11 @@ const Home = () => {
   },[currentUser])
   return (
     <div>
-      <NavBar />
-      <Main />
-      <Footer />
+        <NavBar />
+          <Main />
+        <Footer />
     </div>
   )
 }
 
-export default Home
+export default Feed

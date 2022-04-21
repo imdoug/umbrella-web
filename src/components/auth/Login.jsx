@@ -18,7 +18,7 @@ const Login = () => {
       let navigate = useNavigate()
       useEffect(()=>{
             if(currentUser){
-                  navigate('/home')
+                  navigate('/feed')
             }
       }, [currentUser])
       return (<>

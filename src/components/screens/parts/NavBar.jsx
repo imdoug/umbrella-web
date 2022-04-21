@@ -1,14 +1,16 @@
 import React, { useContext } from 'react'
+import { useNavigate } from "react-router-dom";
 import  { BiSearchAlt,BiNews, BiCalendar }  from 'react-icons/bi'
 import { BsStar, BsChatText } from 'react-icons/bs'
 import { UserContext } from '../../../context/UserContext'
 
 const NavBar = () => {
       const { handleLogOut } = useContext(UserContext)
+      let navigate = useNavigate()
   return (
     <div style={{height: 60, width: '100%', borderBottom: '2px solid #000', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
             {/* logo  */}
-            <div style={{marginLeft: 40, width: '25%', border: '1px solid blue'}}>
+            <div style={{marginLeft: 40, width: '25%', border: '1px solid blue'}} onClick={()=>{navigate('/feed')}}>
                   <h2>Umbrella</h2>
             </div>
             {/*  search bar  */}
@@ -27,8 +29,8 @@ const NavBar = () => {
                   {/* USER CHATS */}
                   <BsChatText fontSize={30}/>
                   {/* MATCHES YOU HAD IN THE APP  */}
-                  <BsStar fontSize={30}/>
-                  <div style={{height: 40, width: 40, borderRadius: 50, background: '#000'}} onClick={()=>{handleLogOut()}}>
+                  <BsStar fontSize={30} onClick={() =>{navigate('/favorites')}}/>
+                  <div style={{height: 40, width: 40, borderRadius: 50, background: '#000'}} onClick={()=>{navigate('/profile')}}>
                         {/* user profile pic will come here */}
                   </div>
             </div>

@@ -18,9 +18,7 @@ const Main = () => {
       }}
     >
       {data.length > 0 &&
-        data
-          .filter((user) => user.username !== currentUser.username)
-          .map((user) => <ListItem user={user} />)}
+        data.map((user) => <ListItem key={user._id} user={user} />)}
     </div>
   );
 };
